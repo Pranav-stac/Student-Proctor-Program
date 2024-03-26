@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <!-- Load static files -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'static_website/about.css' %}" />
+    <!-- Ensure the path to about.css is correct -->
+  </head>
+  <body>
+    <div class="topstrip">
+      <div style="align-self: flex-start; align-self: center">
+        <a href="https://kjsit.somaiya.edu.in/"
+          ><img
+            class="img1"
+            src="{% static 'somaiyalogo.png' %}"
+            alt="SOMAIYA Logo"
+        /></a>
+      </div>
+      <div style="align-self: flex-end; align-self: center">
+        <a href="https://www.facebook.com/kjsieitofficial"
+          ><img class="logofb" src="{% static 'fblogo.png' %}" alt=""
+        /></a>
+      </div>
+      <div style="align-self: flex-end; align-self: center">
+        <a href="https://www.twitter.com/kjsieit1"
+          ><img class="logotit" src="{% static 'twitterlogo.png' %}" alt=""
+        /></a>
+      </div>
+      <div style="align-self: flex-end; align-self: center">
+        <a
+          href="https://www.instagram.com/kjsit_official/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="
+          ><img
+            class="logoinsta"
+            src="{% static 'instalogo.png' %}"
+            alt="insta"
+        /></a>
+      </div>
+      <div style="align-self: flex-end; align-self: center">
+        <img
+          class="img2"
+          src="{% static 'somaiyatrustlogo.jpg' %}"
+          alt="SOMAIYA trust"
+        />
+      </div>
+    </div>
+
+    <header>
+      <h1>Student Proctor Program</h1>
+      <div id="menu-bar-2-container">
+        <div id="menu-bar-2">
+            <a href="{% url 'index' %}">MAIN PAGE</a>
+            <a href="{% url 'search_results' %}">STUDENT INFO</a>
+            <a href="ANNOUNCEMENT.html">REQUESTS</a>
+            <a href="{%url 'meeting' %}">PROCTOR MEETING</a>
+            <a href="message.html">ANNOUNCEMENT</a>
+            <a href="LMS.docx">MESSAGES</a>
+            <a href="{% url 'about' %}">ABOUT</a>
+        </div>
+    </div>  
+    </header>
+
+    <section>
+      
+      <ul class="search-results">
+        <h1>Search Student</h1>
+      <form method="GET" action="{% url 'search_results' %}">
+          <input type="text" name="query" placeholder="Search by name" />
+          <button type="submit">Search</button>
+      </form>
+  
+          {% for student in results %}
+          
+          <div class="student-details-container">
+            <div class="student-details">
+                <strong>Name:</strong> {{ student.name }} <br>
+                <strong>College ID:</strong> {{ student.college_id }} <br>
+                <strong>Year of Admission:</strong> {{ student.year_of_admission }} <br>
+                <strong>Email:</strong> {{ student.email }} <br>
+                <strong>Phone:</strong> {{ student.phone }} <br>
+                <strong>Roll Number:</strong> {{ student.roll_number }} <br>
+                <strong>Branch:</strong> {{ student.branch }} <br>
+                <strong>Academic Year:</strong> {{ student.academic_year }} <br>
+                <strong>Class:</strong> {{ student.class_name }} <br>
+                <strong>Semester:</strong> {{ student.semester }} <br>
+                <strong>Division:</strong> {{ student.division }} <br>
+                <strong>Practical Batch:</strong> {{ student.practical_batch }} <br>
+                <strong>Proctor Batch:</strong> {{ student.proctor_batch }} <br>
+                <strong>Live KT:</strong> {{ student.live_kt }} <br>
+                <strong>Dead KT:</strong> {{ student.dead_kt }} <br>
+            </div>
+            <div class="student-image-container">
+                <img class="student-image" src="{{ student.image.url }}" alt="{{ student.name }}">
+            </div>
+        </div>
+
+          {% empty %}
+          
+          {% endfor %}
+      </ul>
+      
+    <br />
+  </body>
+  <footer class="bottomstrip">
+    <div style="align-self: flex-start; align-self: center">
+      <a href="https://kjsit.somaiya.edu.in/"
+        ><img src="{% static 'Somaiya-white.svg' %}" alt="SOMAIYA Logo"
+      /></a>
+    </div>
+    <div style="align-self: flex-end; align-self: center">
+      <a href="https://www.facebook.com/kjsieitofficial"
+        ><img class="logofb" src="{% static 'fblogo.png' %}" alt=""
+      /></a>
+    </div>
+
+    <div style="align-self: flex-end; align-self: center">
+      <a
+        target="_blank"
+        href="https://www.instagram.com/kjsit_official/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="
+        ><img class="logoinsta" src="{% static 'instalogo.png' %}" alt="insta"
+      /></a>
+    </div>
+    <div style="align-self: flex-end; align-self: center">
+      <img
+        class="img2"
+        src="{% static 'somaiyatrustlogo.jpg' %}"
+        alt="SOMAIYA trust"
+      />
+    </div>
+  </footer>
+
+  <!-- Your static file references -->
+  <!-- <img src="{% static 'fb_logo.png' %}" alt="Facebook Logo">
+  <img src="{% static 'insta_logo.png' %}" alt="Instagram Logo"> 
+  <img src="{% static 'somaiya_trust_logo.jpg' %}" alt="Somaiya Trust Logo">
+  <img src="{% static 'Somaiya-white.svg' %}" alt="Somaiya White Logo">
+  <img src="{% static 'somaiya_logo.png' %}" alt="Somaiya Logo"> -->
+</html>

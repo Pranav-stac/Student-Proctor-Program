@@ -1,0 +1,187 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #9B2928;
+  color: white;
+  text-align: center;
+  padding: 1em;
+
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1em;
+  position: fixed;
+  bottom: 0;
+  
+}
+
+
+#menu-bar-2-container {
+background-color: #9B2928;
+width: 100%;
+ /* Spread items evenly */
+align-items: center; /* Center items vertically */
+}
+
+#menu-bar-2 {
+width: 1000px; /* Adjust width as needed */
+display: flex;
+justify-content: space-evenly;
+margin-left: 17%;
+}
+
+#menu-bar-2 a {
+color: white;
+text-decoration: none;
+padding:0 30px;
+
+border-right: 1px solid #BB4545;
+font-size: 15px;
+font-weight: 500; /* Ensure the text is bold */
+}
+
+#menu-bar-2 a:hover {
+text-decoration: underline;
+}
+
+.login {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  text-align: justify;
+}
+
+.about-us {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  text-align: justify;
+}
+.student-details-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.student-details {
+  width: 60%;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  text-align: justify;
+}
+
+.student-image-container {
+  width: 50%
+}
+
+.student-image {
+  width: 50%;
+  border-radius: 10px;
+}
+
+.search-results {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  padding-bottom: 100px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  text-align: justify;
+}
+
+.team {
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.team-member {
+  text-align: left;
+  margin: 20px;
+  /* display: flex; */
+  /* align-items: center; */
+}
+
+.team-member img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.topstrip{
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  background-color: #fff;
+  bottom: 0;
+  width:80%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  background-color: #fff;
+  width: 100%;
+  height: 80px;
+
+}
+
+.img1{
+  width: 270px;
+  margin-left: 35px;
+}
+
+.img2{
+  width: 60px;
+  margin-left: 10px;
+}
+
+.logoinsta{
+  width: 15px;
+}
+.logofb{
+  width: 15px;
+  margin-right: 10px;
+  margin-left: 950px;
+}
+.logotit{
+  width: 15px;
+  margin-right: 10px;;
+}
+
+ul{
+  list-style-type: circle;
+  
+}
+
+.bottomstrip{
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  background-color: #154a73;
+  width: 100%;
+  height: 80px;
+  
+  
+  
+}
+
+
+/* .flex{ */
+  /* display: flex; */
+  /* align-items: center; */
+/* } */

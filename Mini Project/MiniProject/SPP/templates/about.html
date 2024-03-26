@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>About Us</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'static_website/about.css' %}" />
+</head>
+<body>
+  <div class="topstrip">
+    <div style="align-self: flex-start; align-self: center;"><a href="https://kjsit.somaiya.edu.in/"><img class="img1" src="{% static 'somaiyalogo.png' %}" alt="SOMAIYA Logo"></a></div>
+    <div style="align-self: flex-end; align-self: center;"><a href="https://www.facebook.com/kjsieitofficial"><img class="logofb" src="{% static 'fblogo.png' %}" alt=""></a></div>
+    <div style="align-self: flex-end; align-self: center;"><a href="https://www.twitter.com/kjsieit1"><img class="logotit" src="{% static 'twitterlogo.png' %}" alt=""></a></div>
+    <div style="align-self: flex-end; align-self: center;"><a target="_blank" href="https://www.instagram.com/kjsit_official/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="><img class="logoinsta" src="{% static 'instalogo.png' %}" alt="insta"></a></div>
+    <div style="align-self: flex-end; align-self: center;"><img class="img2" src="{% static 'somaiyatrustlogo.jpg' %}" alt="SOMAIYA trust"></div>
+  </div>
+  
+  <header>
+    <h1>Student Proctor Program</h1>
+    <div id="menu-bar-2-container">
+      <div id="menu-bar-2">
+          <a href="{% url 'index' %}">MAIN PAGE</a>
+          <a href="{% url 'search_results' %}">STUDENT INFO</a>
+          <a href="ANNOUNCEMENT.html">REQUESTS</a>
+          <a href="{% url 'meeting' %}">PROCTOR MEETING</a>
+          <a href="message.html">ANNOUNCEMENT</a>
+          <a href="">MESSAGES</a>
+          <a href="{% url 'about' %}">ABOUT</a>
+      </div>
+  </div>  
+  </header>
+  
+<br>
+  
+
+  
+
+  <br>
+  <section class="about-us">
+    <title>
+        <h1>About Us</h1>
+      </title>
+    <h2>Department of Artificial Intelligence and Data Science</h2>
+    <p>
+      Department of Artificial Intelligence and Data Science established in the year 2020-2021 with the intake capacity
+      of 60 seats. An undergraduate program B.Tech Artificial Intelligence and Data Science which imparting knowledge in
+      the two emerging thrust areas Artificial Intelligence (AI) and Data science (DS). This is an interdisciplinary
+      branch of science, engineering and technology creating a complete system and a pattern shift in almost every
+      sector of the technical industry, academics and research. Machine Learning (ML) is the subset of AI, makes
+      computers thinks and act like humans and Deep Learning is the subset of ML, allows machines to think and make
+      decisions like humans. This B.Tech course is designed to enable students to build the next age of intelligence
+      machines and to prepare students with the skills to develop real world applications using data analytics and
+      visualization technologies. With the tremendous amount of data generated every day, Data Science plays vital role
+      helping every business organisation in identifying business trends and changes through advanced Big Data
+      Analytics, statistical analysis, data extraction, manipulation, visualization and data maintenance to interpret
+      and predict business results and future.
+    </p>
+
+    <h2>Vision of Department of Artificial Intelligence And Data Science</h2>
+    <p>
+      To be an excellent center of learning, imparting quality education and creating computer competent professionals
+      to serve the society at large.
+    </p>
+
+    
+    </p>
+</p>
+</section>
+<br>
+<section class="about-us">
+  <h2>Guided by</h2>
+
+  <div class="team-member">
+    <!-- <img src="team_member1.jpg" alt="Team Member 1"> -->
+    <h3>Prof. Vidya Sagvekar</h3><br>
+
+    <!-- <p>Founder & CEO</p> -->
+  </div>
+  <h2>Developed by</h2>
+
+  <div class="team-member">
+   
+    <h3>Pranav Narkhede<br>Bhargavi Joshi<br>Ashika Jain <h3>
+
+
+</section>
+
+   
+ </section>
+
+<footer class="bottomstrip">
+  <div style="align-self: flex-start; align-self: center;"><a href="https://kjsit.somaiya.edu.in/"><img src="{% static 'Somaiya-white.svg' %}" alt="somaiya"></a></div>
+  <div style="align-self: flex-end; align-self: center;"><a href="https://www.facebook.com/kjsieitofficial"><img class="logofb" src="{% static 'fblogo.png' %}" alt=""></a></div>
+  <div style="align-self: flex-end; align-self: center;"><a href="https://www.twitter.com/kjsieit1"><img class="logotit" src="{% static 'twitterlogo.png' %}" alt=""></a></div>
+  <div style="align-self: flex-end; align-self: center;"><a target="_blank" href="https://www.instagram.com/kjsit_official/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="><img class="logoinsta" src="{% static 'instalogo.png' %}" alt="insta"></a></div>
+  <div style="align-self: flex-end; align-self: center;"><img class="img2" src="{% static 'somaiyatrustlogo.jpg' %}" alt="SOMAIYA trust"></div>
+</footer>
+</body>
+</html>

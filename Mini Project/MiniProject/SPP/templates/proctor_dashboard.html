@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>About Us</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'static_website/about.css' %}" />
+</head>
+<body>
+  <div class="topstrip">
+    <div style="align-self: flex-start; align-self: center;"><a href="https://kjsit.somaiya.edu.in/"><img class="img1" src="{% static 'somaiyalogo.png' %}" alt="SOMAIYA Logo"></a></div>
+    <div style="align-self: flex-end; align-self: center;"><a href="https://www.facebook.com/kjsieitofficial"><img class="logofb" src="{% static 'fblogo.png' %}" alt=""></a></div>
+    <div style="align-self: flex-end; align-self: center;"><a href="https://www.twitter.com/kjsieit1"><img class="logotit" src="{% static 'twitterlogo.png' %}" alt=""></a></div>
+    <div style="align-self: flex-end; align-self: center;"><a target="_blank" href="https://www.instagram.com/kjsit_official/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="><img class="logoinsta" src="{% static 'instalogo.png' %}" alt="insta"></a></div>
+    <div style="align-self: flex-end; align-self: center;"><img class="img2" src="{% static 'somaiyatrustlogo.jpg' %}" alt="SOMAIYA trust"></div>
+  </div>
+  
+  <header>
+    <h1>Student Proctor Program</h1>
+    <div id="menu-bar-2-container">
+      <div id="menu-bar-2">
+          <a href="{% url 'index' %}">MAIN PAGE</a>
+          <a href="{% url 'search_results' %}">STUDENT INFO</a>
+          <a href="ANNOUNCEMENT.html">REQUESTS</a>
+          <a href="{% url 'meeting' %}">PROCTOR MEETING</a>
+          <a href="message.html">ANNOUNCEMENT</a>
+          <a href="">MESSAGES</a>
+          <a href="{% url 'about' %}">ABOUT</a>
+          <a href="{% url 'logout' %}">LOGOUT</a>
+      </div>
+  </div>  
+  </header>
+  
+<br>
+  <section class="about-us">
+   
+ </section>
+
+<footer class="bottomstrip">
+  <div style="align-self: flex-start; align-self: center;"><a href="https://kjsit.somaiya.edu.in/"><img src="{% static 'Somaiya-white.svg' %}" alt="somaiya"></a></div>
+  <div style="align-self: flex-end; align-self: center;"><a href="https://www.facebook.com/kjsieitofficial"><img class="logofb" src="{% static 'fblogo.png' %}" alt=""></a></div>
+  <div style="align-self: flex-end; align-self: center;"><a href="https://www.twitter.com/kjsieit1"><img class="logotit" src="{% static 'twitterlogo.png' %}" alt=""></a></div>
+  <div style="align-self: flex-end; align-self: center;"><a target="_blank" href="https://www.instagram.com/kjsit_official/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="><img class="logoinsta" src="{% static 'instalogo.png' %}" alt="insta"></a></div>
+  <div style="align-self: flex-end; align-self: center;"><img class="img2" src="{% static 'somaiyatrustlogo.jpg' %}" alt="SOMAIYA trust"></div>
+</footer>
+</body>
+</html>

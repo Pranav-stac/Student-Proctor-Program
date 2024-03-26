@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'static_website/about.css' %}" />
+</head>
+<body>
+  <div class="topstrip">
+    <div style="align-self: flex-start; align-self: center;"><a href="https://kjsit.somaiya.edu.in/"><img class="img1" src="{% static 'somaiyalogo.png' %}" alt="SOMAIYA Logo"></a></div>
+    <div style="align-self: flex-end; align-self: center;"><a href="https://www.facebook.com/kjsieitofficial"><img class="logofb" src="{% static 'fblogo.png' %}" alt=""></a></div>
+    <div style="align-self: flex-end; align-self: center;"><a href="https://www.twitter.com/kjsieit1"><img class="logotit" src="{% static 'twitterlogo.png' %}" alt=""></a></div>
+    <div style="align-self: flex-end; align-self: center;"><a target="_blank" href="https://www.instagram.com/kjsit_official/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="><img class="logoinsta" src="{% static 'instalogo.png' %}" alt="insta"></a></div>
+    <div style="align-self: flex-end; align-self: center;"><img class="img2" src="{% static 'somaiyatrustlogo.jpg' %}" alt="SOMAIYA trust"></div>
+  </div>
+  
+  <header>
+    <h1>Student Proctor Program</h1>
+    <div id="menu-bar-2-container">
+      <div id="menu-bar-2">
+          <a href="{% url 'index' %}">MAIN PAGE</a>
+          <a href="{% url 'search_results' %}">STUDENT INFO</a>
+          <a href="ANNOUNCEMENT.html">REQUESTS</a>
+          <a href="{%url 'meeting' %}">PROCTOR MEETING</a>
+          <a href="message.html">ANNOUNCEMENT</a>
+          <a href="LMS.docx">MESSAGES</a>
+          <a href="{% url 'about' %}">ABOUT</a>
+      </div>
+    </div>  
+  </header>
+  
+  <br>
+  
+
+  <section class="about-us">
+    <h2>Select Meeting Type:</h2>
+    <select id="meetingType" onchange="showFields()">
+      <option value="offline">Offline</option>
+      <option value="online">Online</option>
+    </select>
+
+    <div id="offlineFields" style="display: none;">
+      <label for="meetingDate">Meeting Date:</label>
+      <input type="date" id="meetingDate" name="meetingDate"><br><br>
+      <label for="meetingTime">Meeting Time:</label>
+      <input type="time" id="meetingTime" name="meetingTime"><br><br>
+      <label for="reason">Reason:</label><br>
+      <textarea id="reason" name="reason" rows="4" cols="50"></textarea><br><br>
+      <button onclick="scheduleMeeting()">Schedule Meeting</button>
+    </div>
+    
+    <div id="onlineFields" style="display: none;">
+        <label for="meetingDate">Meeting Date:</label>
+        <input type="date" id="meetingDate" name="meetingDate"><br><br>
+        <label for="meetingTime">Meeting Time:</label>
+        <input type="time" id="meetingTime" name="meetingTime"><br><br>
+        <label for="reason">Reason:</label><br>
+        <textarea id="reason" name="reason" rows="4" cols="50"></textarea><br><br>
+        <button onclick="scheduleMeeting()">Schedule Meeting</button>
+      </div>
+    <script>
+        function showFields() {
+          var meetingType = document.getElementById("meetingType").value;
+          var offlineFields = document.getElementById("offlineFields");
+          var onlineFields = document.getElementById("onlineFields");
+          
+          if (meetingType === "offline") {
+            offlineFields.style.display = "block";
+          } else {
+            offlineFields.style.display = "block";
+          }
+        }
+  
+        function scheduleMeeting() {
+          var meetingDate = document.getElementById("meetingDate").value;
+          var meetingTime = document.getElementById("meetingTime").value;
+          var reason = document.getElementById("reason").value;
+  
+          // Send data to the server using AJAX
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "{% url 'schedule_meeting' %}", true);
+          xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+          xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken")); // Include the CSRF token in the request headers
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                // Handle successful response
+                alert("Meeting scheduled successfully!");
+              } else {
+                // Handle error response
+                alert("Error scheduling meeting. Please try again.");
+              }
+            }
+          };
+  
+          // Construct form data
+          var formData = "meetingDate=" + encodeURIComponent(meetingDate) +
+                         "&meetingTime=" + encodeURIComponent(meetingTime) +
+                         "&reason=" + encodeURIComponent(reason);
+  
+          xhr.send(formData);
+        }
+  
+        // Function to get CSRF token from cookie
+        function getCookie(name) {
+          var cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+              var cookie = cookies[i].trim();
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+              }
+            }
+          }
+          return cookieValue;
+        }
+      </script>
+  </section>
+
+
+  <footer class="bottomstrip">
+    <div style="align-self: flex-start; align-self: center;"><a href="https://kjsit.somaiya.edu.in/"><img src="{% static 'Somaiya-white.svg' %}" alt="somaiya"></a></div>
+    <div style="align-self: flex-end; align-self: center;"><a href="https://www.facebook.com/kjsieitofficial"><img class="logofb" src="{% static 'fblogo.png' %}" alt=""></a></div>
+    <div style="align-self: flex-end; align-self: center;"><a href="https://www.twitter.com/kjsieit1"><img class="logotit" src="{% static 'twitterlogo.png' %}" alt=""></a></div>
+    <div style="align-self: flex-end; align-self: center;"><a target="_blank" href="https://www.instagram.com/kjsit_official/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="><img class="logoinsta" src="{% static 'instalogo.png' %}" alt="insta"></a></div>
+    <div style="align-self: flex-end; align-self: center;"><img class="img2" src="{% static 'somaiyatrustlogo.jpg' %}" alt="SOMAIYA tr"></div>
+  </footer>
+
+  
+</body>
+</html>
