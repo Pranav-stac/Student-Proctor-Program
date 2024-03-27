@@ -68,6 +68,8 @@ text-decoration: underline;
   background-color: #f4f4f4;
   border-radius: 10px;
   text-align: justify;
+  margin-bottom: 200px;
+  
 }
 .student-details-container {
   display: flex;

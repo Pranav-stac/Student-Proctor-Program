@@ -1,9 +1,11 @@
 # views.py
 
 from django.contrib.auth import authenticate, login
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from .models import Announcement
   
 from .models import Student     
 from .models import Meeting
@@ -89,3 +91,15 @@ def search_results(request):
     # Pass the search results to the template for rendering
     return render(request, 'search_results.html', {'query': query, 'results': results})
 
+def get_latest_announcements(request):
+    # Retrieve latest announcements
+    latest_announcements = Announcement.objects.order_by('-created_at')[:10]
+
+    # Convert announcements to JSON format
+    announcements_data = [{
+        'title': announcement.title,
+        'content': announcement.content,
+    } for announcement in latest_announcements]
+
+    # Return JSON response
+    return JsonResponse({'announcements': announcements_data})

@@ -14,7 +14,7 @@ urlpatterns = [
     path('proctor_dashboard/', views.proctor_dashboard, name='proctor_dashboard'),
     path('logout/', views.logout_view, name='logout'),
     path('announcement/', views.announcement, name='announcement'),
-  
+    path('get_latest_announcements/', views.get_latest_announcements, name='get_latest_announcements'), 
 
      
    
