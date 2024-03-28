@@ -39,8 +39,8 @@ class Student(models.Model):
     proctor_batch = models.CharField(max_length=10)
     live_kt = models.IntegerField()
     dead_kt = models.IntegerField()
-    image = models.ImageField(upload_to='student_images/')
-
+    image = models.ImageField(upload_to='student_images/',null=True, blank=True)
+    certificates = models.ImageField(upload_to='certificates/',null=True, blank=True)
 
     def __str__(self):
         return self.name
