@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #9B2928;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .about-us {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            text-align: justify;
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .team-member img {
+            width: 100px;
+            height: auto;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .team-member-info {
+            flex-grow: 1;
+        }
+
+        .footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .footer img {
+            width: 30px;
+            height: 30px;
+            margin: 0 5px;
+        }
+
+        /* Styles for the announcement tab and content */
+        .announcement-container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .announcement-tab {
+            background-color: #ce2849;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .announcement-tab:hover {
+            background-color: #ce2849;
+        }
+
+        .announcement-content {
+            display: none;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .announcement-content.active {
+            display: block;
+        }
+
+        #menu-bar-2-container {
+            background-color: #9B2928;
+            width: 100%;
+            /* Spread items evenly */
+            align-items: center;
+            /* Center items vertically */
+        }
+
+        #menu-bar-2 {
+            width: 1000px;
+            /* Adjust width as needed */
+            display: flex;
+            justify-content: space-evenly;
+            margin-left: 17%;
+        }
+
+        #menu-bar-2 a {
+            color: white;
+            text-decoration: none;
+            padding: 0 30px;
+
+            border-right: 1px solid #BB4545;
+            font-size: 15px;
+            font-weight: 500;
+            /* Ensure the text is bold */
+        }
+
+        #menu-bar-2 a:hover {
+            text-decoration: underline;
+        }
+
+        /* Styles for the footer links */
+        .footer-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a {
+            margin-right: 15px;
+        }
+
+        .footer-links img {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Home Page</h1>
+
+
+        <div id="menu-bar-2-container">
+            <div id="menu-bar-2">
+                <a href="{% url 'index' %}">MAIN PAGE</a>
+                <a href="{% url 'search_results' %}">STUDENT INFO</a>
+                <a href="ANNOUNCEMENT.html">REQUESTS</a>
+                <a href="{% url 'meeting' %}">PROCTOR MEETING</a>
+                <a href="{% url 'announcement' %}">ANNOUNCEMENT</a>
+                <a href="">MESSAGES</a>
+                <a href="{% url 'about' %}">ABOUT</a>
+            </div>
+        </div>
+    </header>
+    </header>
+
+    <div class="about-us">
+        <!-- Content for about us section goes here -->
+    </div>
+
+    <div class="announcement-container">
+        <div class="announcement-tab" onclick="toggleAnnouncement('announcements')">Announcements</div>
+        <div class="announcement-tab" onclick="toggleAnnouncement('reminders')">Reminders</div>
+        <div class="announcement-content" id="announcementContent-announcements">
+            <!-- Announcements content goes here -->
+            <h2>Announcements</h2>
+            <p><strong>Upcoming Meet:</strong> Online meet at 10:00 am</p>
+            <p><strong>Important Reminder:</strong> Please attach your medical details in the given folder</p>
+        </div>
+        <div class="announcement-content" id="announcementContent-reminders">
+            <!-- Reminders content goes here -->
+            <h2>Reminders</h2>
+            <p><strong>Reminder:</strong> Don't forget to submit your assignment by the deadline</p>
+        </div>
+    </div>
+
+    <section class="footer">
+        <div class="team-member">
+            <img src="C:\Users\Ashika Jain\OneDrive\Pictures\Screenshots\nemade.png" alt="Dr. Milind Nemade">
+            <div class="team-member-info">
+                <h3>HOD</h3>
+                <p>Dr. Milind Nemade</p>
+                <p>Contact No.: 9987014288</p>
+                <p>E-mail: hodaids.tech@somaiya.edu</p>
+                <p>Office: HOD Cabin 206</p>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <img src="C:\Users\Ashika Jain\OneDrive\Pictures\Screenshots\class teacher.png" alt="Prof. Vidya Sagvekar">
+            <div class="team-member-info">
+                <h3>Class Teacher</h3>
+                <p>Prof. Vidya Sagvekar</p>
+                <p>Contact No.: 9820641871</p>
+                <p>E-mail: vsagvekar@somaiya.edu</p>
+                <p>Office: Lab 401</p>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <img src="C:\Users\Ashika Jain\OneDrive\Pictures\Screenshots\proctor.png" alt="Prof. Ghanashyam Phadke">
+            <div class="team-member-info">
+                <h3>Proctor</h3>
+                <p>Prof. Ghanashyam Phadke</p>
+                <p>Contact No.: 9322021034</p>
+                <p>E-mail: ghanashyam.p@somaiya.edu</p>
+                <p>Office: Ground Floor</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer">
+        <div class="footer-links">
+            <div><a href="https://kjsit.somaiya.edu.in/"><img class="img1"
+                        src="C:\Users\Ashika Jain\Downloads\fwd\somaiyalogo.png" alt="SOMAIYA Logo"></a></div>
+            <div><a href="https://www.facebook.com/kjsieitofficial"><img class="logofb"
+                        src="C:\Users\Ashika Jain\Downloads\fwd\fb logo.png" alt=""></a></div>
+            <div><a href="https://www.twitter.com/kjsieit1"><img class="logotit"
+                        src="C:\Users\Ashika Jain\Downloads\fwd\X loho.png" alt=""></a></div>
+            <div><a target="_blank"
+                    href="https://www.instagram.com/kjsit_official/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="><img
+                        class="logoinsta" src="C:\Users\Ashika Jain\Downloads\fwd\insta logo.png" alt="insta"></a></div>
+            <div><a href="#"><img class="img2" src="C:\Users\Ashika Jain\Downloads\fwd\somaiya trust logo.jpg"
+                        alt="SOMAIYA trust"></a></div>
+        </div>
+    </section>
+</body>
+
+<script>
+    function toggleAnnouncement(type) {
+        var announcements = document.getElementById("announcementContent-announcements");
+        var reminders = document.getElementById("announcementContent-reminders");
+        if (type === 'announcements') {
+            announcements.classList.toggle("active");
+            reminders.classList.remove("active");
+        } else {
+            announcements.classList.remove("active");
+            reminders.classList.toggle("active");
+        }
+    }
+</script>
+
+</html>
