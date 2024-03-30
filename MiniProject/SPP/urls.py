@@ -15,6 +15,7 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('announcement/', views.announcement, name='announcement'),
     path('get_latest_announcements/', views.get_latest_announcements, name='get_latest_announcements'), 
+<<<<<<< HEAD
     # urls.py
 
 
@@ -25,6 +26,11 @@ urlpatterns = [
     path('marksheet/view/', views.view_marksheet, name='view_marksheet'),
     # Add other URL patterns as needed
 ]
+=======
+    path('', views.index, name='index'),
+    path('send_message/', views.send_message, name='send_message'),
+    path('get_messages/', views.get_messages, name='get_messages'),
+>>>>>>> 4aecfee61da946b0acc68c3ee74af3d3af2a45ca
 
      
    
