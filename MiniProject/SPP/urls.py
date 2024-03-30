@@ -15,6 +15,9 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('announcement/', views.announcement, name='announcement'),
     path('get_latest_announcements/', views.get_latest_announcements, name='get_latest_announcements'), 
+    path('', views.index, name='index'),
+    path('send_message/', views.send_message, name='send_message'),
+    path('get_messages/', views.get_messages, name='get_messages'),
 
      
    

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     fetch('/get_latest_announcements/')
         .then(response => response.json())
         .then(data => {

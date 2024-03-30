@@ -12,6 +12,11 @@ from .models import Meeting
 from .forms import LoginForm
 from .models import Proctor
 
+from django.shortcuts import render
+from django.http import JsonResponse
+from .models import Message
+from django.views.decorators.csrf import csrf_exempt
+
 def proctor_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -103,3 +108,18 @@ def get_latest_announcements(request):
 
     # Return JSON response
     return JsonResponse({'announcements': announcements_data})
+
+def index(request):
+    return render(request, 'index.html')
+
+@csrf_exempt
+def send_message(request):
+    if request.method == 'POST':
+        sender = request.POST.get('sender')
+        message = request.POST.get('message')
+        Message.objects.create(sender=sender, message=message)
+        return JsonResponse({'status': 'OK'})
+
+def get_messages(request):
+    messages = Message.objects.all().values()
+    return JsonResponse(list(messages), safe=False)
