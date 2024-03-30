@@ -103,3 +103,29 @@ def get_latest_announcements(request):
 
     # Return JSON response
     return JsonResponse({'announcements': announcements_data})
+
+
+def add_certificate(request):
+    # Logic to add certificate
+    # Access form data using request.POST
+    return JsonResponse({'message': 'Certificate added successfully'})
+
+def check_certificate_status(request):
+    # Logic to check certificate status
+    # Access form data using request.POST
+    return JsonResponse({'message': 'Certificate status checked'})
+
+def view_certificate(request):
+    # Logic to view certificate
+    # Access form data using request.POST
+    return JsonResponse({'message': 'Certificate viewed'})
+
+def add_marksheet(request):
+    # Logic to add marksheet
+    # Access form data using request.POST
+    return JsonResponse({'message': 'Marksheet added successfully'})
+
+def view_marksheet(request):
+    # Logic to view marksheet
+    # Access form data using request.POST
+    return JsonResponse({'message': 'Marksheet viewed'})

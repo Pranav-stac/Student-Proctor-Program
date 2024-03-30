@@ -15,8 +15,17 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('announcement/', views.announcement, name='announcement'),
     path('get_latest_announcements/', views.get_latest_announcements, name='get_latest_announcements'), 
+    # urls.py
+
+
+    path('certificate/add/', views.add_certificate, name='add_certificate'),
+    path('certificate/status/', views.check_certificate_status, name='check_certificate_status'),
+    path('certificate/view/', views.view_certificate, name='view_certificate'),
+    path('marksheet/add/', views.add_marksheet, name='add_marksheet'),
+    path('marksheet/view/', views.view_marksheet, name='view_marksheet'),
+    # Add other URL patterns as needed
+]
 
      
    
 
-]  

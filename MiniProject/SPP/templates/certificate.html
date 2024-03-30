@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrated Form</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            text-align: left;
+            background-color: #fff;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #9B2928;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        #menu-bar-2-container {
+            background-color: #9B2928;
+            width: 100%;
+            /* Spread items evenly */
+            align-items: center;
+            /* Center items vertically */
+        }
+
+        #menu-bar-2 {
+            width: 1000px;
+            /* Adjust width as needed */
+            display: flex;
+            justify-content: space-evenly;
+            margin-left: 17%;
+        }
+
+        #menu-bar-2 a {
+            color: white;
+            text-decoration: none;
+            padding: 0 30px;
+
+            border-right: 1px solid #BB4545;
+            font-size: 15px;
+            font-weight: 500;
+            /* Ensure the text is bold */
+        }
+
+        #menu-bar-2 a:hover {
+            text-decoration: underline;
+        }
+
+
+        .footer {
+            background-color: #343e76fe;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        .footer-links img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .footer-links img:hover {
+            transform: scale(1.1);
+        }
+
+        .content-co5>.tab-xvy {
+            display: none;
+        }
+
+        .content-co5>.act-ii6 {
+            display: block;
+        }
+
+        .main-pas {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px;
+        }
+
+        .box-iml {
+            display: flex;
+            flex-direction: column;
+            margin: 1px 3px;
+            flex-grow: 1;
+        }
+
+        .col-7oy {
+            border: #00000011 1px solid;
+            border-radius: 5px;
+            padding: 2%;
+        }
+
+        h3 {
+            margin-top: 0;
+            margin-bottom: .5rem;
+            font-weight: 500;
+            line-height: 1.2;
+            font-size: 1.75rem;
+        }
+
+        input {
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            overflow: visible;
+        }
+
+        [type="submit"] {
+            -webkit-appearance: button;
+        }
+
+        .btn-k16 {
+            display: inline-block;
+            font-weight: 400;
+            color: #2125290e;
+            text-align: center;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: .25rem;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        [type="submit"]:not(:disabled) {
+            cursor: pointer;
+        }
+
+        .btn-k16.btn-lri {
+            background-color: #a02929;
+            color: white;
+            border-radius: 5px;
+            border: #d3d3d3;
+            height: 40px;
+            text-align: center;
+        }
+
+        @keyframes fadeEffect {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Custom Styles for Different Buttons */
+        #stu-fh7.style-YIGlT,
+        #stu-fh7.style-iLQbS,
+        #stu-dsy.style-y37sa,
+        #stu-fh7.style-czCGy,
+        #stu-r6d.style-vvM1l,
+        #mar-ycs.style-TfOx5 {
+            width: 180px;
+            height: 40px;
+        }
+
+        #v-p-khm.style-costj {
+            display: none;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- Header content -->
+        <h1>Certificates</h1>
+        <div id="menu-bar-2-container">
+            <div id="menu-bar-2">
+                <a href="{% url 'index' %}">MAIN PAGE</a>
+                <a href="{% url 'search_results' %}">STUDENT INFO</a>
+                <a href="ANNOUNCEMENT.html">REQUESTS</a>
+                <a href="{% url 'meeting' %}">PROCTOR MEETING</a>
+                <a href="{% url 'announcement' %}">ANNOUNCEMENT</a>
+                <a href="">MESSAGES</a>
+                <a href="{% url 'about' %}">ABOUT</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-co5" style="padding: 1% 3% 3% 3%">
+        <!-- Main content with forms -->
+        <div class="tab-xvy act-ii6" id="v-p-8fh">
+            <div class="main-pas">
+                <div class="box-iml box-26n col-7oy">
+                    <h3>Certificate Add</h3>
+                    <br>
+                    <form id="certificateAddForm">
+                        <input type="submit" name="studentverify" class="btn-k16 btn-lri style-YIGlT" value="Add"
+                            id="stu-fh7">
+                    </form>
+                    <br>
+                </div>
+                <div class="box-iml box-26n col-7oy">
+                    <h3>Certificate Status</h3>
+                    <br>
+                    <form id="certificateStatusForm">
+                        <input type="submit" name="studentverify" class="btn-k16 btn-lri style-iLQbS" value="Check"
+                            id="stu-fh7">
+                    </form>
+                    <br>
+                </div>
+                <div class="box-iml box-26n col-7oy">
+                    <h3>Certificate View</h3>
+                    <br>
+                    <form id="certificateViewForm">
+                        <input type="submit" name="studentview" class="btn-k16 btn-lri style-y37sa" value="View"
+                            id="stu-dsy">
+                    </form>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="tab-xvy style-costj" id="v-p-khm">
+            <div class="main-pas">
+                <div class="box-iml box-26n col-7oy">
+                    <h3>Marksheet Add</h3>
+                    <br>
+                    <form id="marksheetAddForm">
+                        <input type="submit" name="studentverify" class="btn-k16 btn-lri style-czCGy" value="Add"
+                            id="stu-fh7">
+                    </form>
+                    <br>
+                </div>
+                <div class="box-iml box-26n col-7oy">
+                    <h3>Marksheet View</h3>
+                    <br>
+                    <form id="marksheetViewForm">
+                        <input type="submit" name="marksheetview" class="btn-k16 btn-lri style-TfOx5" value="View"
+                            id="mar-ycs">
+                    </form>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <!-- Footer content -->
+        <section class="footer-links">
+            <div><a href="https://kjsit.somaiya.edu.in/"><img class="img1" src="somaiyalogo.png" alt="SOMAIYA Logo"></a>
+            </div>
+            <div><a href="https://www.facebook.com/kjsieitofficial"><img class="logofb" src="fb logo.png"
+                        alt="Facebook"></a></div>
+            <div><a href="https://www.twitter.com/kjsieit1"><img class="logotit" src="X loho.png" alt="Twitter"></a>
+            </div>
+            <div><a target="_blank"
+                    href="https://www.instagram.com/kjsit_official/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="><img
+                        class="logoinsta" src="insta logo.png" alt="Instagram"></a></div>
+            <div><a href="#"><img class="img2" src="somaiya trust logo.jpg" alt="SOMAIYA trust"></a></div>
+        </section>
+    </footer>
+
+    <script>
+        // JavaScript code to handle form submissions
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to handle form submission
+            function handleSubmitForm(formId, url) {
+                document.getElementById(formId).addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    console.log(`${formId} form submitted`);
+
+                    fetch(url, {
+                        method: 'POST',
+                        body: new FormData(this),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data.message);
+                            // Add any additional logic here, such as displaying a success message
+                        })
+                        .catch(error => console.error('Error:', error));
+                });
+            }
+
+            // Handle Certificate Add form submission
+            handleSubmitForm('certificateAddForm', '/certificate/add/');
+
+            // Handle Certificate Status form submission
+            handleSubmitForm('certificateStatusForm', '/certificate/status/');
+
+            // Handle Certificate View form submission
+            handleSubmitForm('certificateViewForm', '/certificate/view/');
+
+            // Handle Marksheet Add form submission
+            handleSubmitForm('marksheetAddForm', '/marksheet/add/');
+
+            // Handle Marksheet View form submission
+            handleSubmitForm('marksheetViewForm', '/marksheet/view/');
+        });
+    </script>
+</body>
+
+</html>
