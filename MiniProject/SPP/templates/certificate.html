@@ -5,327 +5,202 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Integrated Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'static_website/about.css' %}" />
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-            font-size: 1rem;
-            font-weight: 400;
-            line-height: 1.5;
-            color: #212529;
-            text-align: left;
-            background-color: #fff;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #9B2928;
-            color: white;
-            text-align: center;
-            padding: 1em;
-        }
-
-        #menu-bar-2-container {
-            background-color: #9B2928;
-            width: 100%;
-            /* Spread items evenly */
-            align-items: center;
-            /* Center items vertically */
-        }
-
-        #menu-bar-2 {
-            width: 1000px;
-            /* Adjust width as needed */
-            display: flex;
-            justify-content: space-evenly;
-            margin-left: 17%;
-        }
-
-        #menu-bar-2 a {
-            color: white;
-            text-decoration: none;
-            padding: 0 30px;
-
-            border-right: 1px solid #BB4545;
-            font-size: 15px;
-            font-weight: 500;
-            /* Ensure the text is bold */
-        }
-
-        #menu-bar-2 a:hover {
-            text-decoration: underline;
-        }
-
-
-        .footer {
-            background-color: #343e76fe;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .footer-links a {
-            display: inline-block;
-            margin-right: 15px;
-        }
-
-        .footer-links img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .footer-links img:hover {
-            transform: scale(1.1);
-        }
-
-        .content-co5>.tab-xvy {
+        /* Popup CSS */
+        .popup {
             display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
         }
 
-        .content-co5>.act-ii6 {
-            display: block;
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
         }
 
-        .main-pas {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            padding: 10px;
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
         }
 
-        .box-iml {
-            display: flex;
-            flex-direction: column;
-            margin: 1px 3px;
-            flex-grow: 1;
-        }
-
-        .col-7oy {
-            border: #00000011 1px solid;
-            border-radius: 5px;
-            padding: 2%;
-        }
-
-        h3 {
-            margin-top: 0;
-            margin-bottom: .5rem;
-            font-weight: 500;
-            line-height: 1.2;
-            font-size: 1.75rem;
-        }
-
-        input {
-            margin: 0;
-            font-family: inherit;
-            font-size: inherit;
-            line-height: inherit;
-            overflow: visible;
-        }
-
-        [type="submit"] {
-            -webkit-appearance: button;
-        }
-
-        .btn-k16 {
-            display: inline-block;
-            font-weight: 400;
-            color: #2125290e;
-            text-align: center;
-            vertical-align: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            background-color: transparent;
-            border: 1px solid transparent;
-            padding: .375rem .75rem;
-            font-size: 1rem;
-            line-height: 1.5;
-            border-radius: .25rem;
-            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-        }
-
-        [type="submit"]:not(:disabled) {
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
             cursor: pointer;
         }
-
-        .btn-k16.btn-lri {
-            background-color: #a02929;
-            color: white;
-            border-radius: 5px;
-            border: #d3d3d3;
-            height: 40px;
-            text-align: center;
-        }
-
-        @keyframes fadeEffect {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        /* Custom Styles for Different Buttons */
-        #stu-fh7.style-YIGlT,
-        #stu-fh7.style-iLQbS,
-        #stu-dsy.style-y37sa,
-        #stu-fh7.style-czCGy,
-        #stu-r6d.style-vvM1l,
-        #mar-ycs.style-TfOx5 {
-            width: 180px;
-            height: 40px;
-        }
-
-        #v-p-khm.style-costj {
-            display: none;
-        }
-    </style>
     </style>
 </head>
 
 <body>
-    <header>
-        <!-- Header content -->
-        <h1>Certificates</h1>
-        <div id="menu-bar-2-container">
-            <div id="menu-bar-2">
-                <a href="{% url 'index' %}">MAIN PAGE</a>
-                <a href="{% url 'search_results' %}">STUDENT INFO</a>
-                <a href="ANNOUNCEMENT.html">REQUESTS</a>
-                <a href="{% url 'meeting' %}">PROCTOR MEETING</a>
-                <a href="{% url 'announcement' %}">ANNOUNCEMENT</a>
-                <a href="">MESSAGES</a>
-                <a href="{% url 'about' %}">ABOUT</a>
-            </div>
-        </div>
-    </header>
-
-    <div class="content-co5" style="padding: 1% 3% 3% 3%">
-        <!-- Main content with forms -->
-        <div class="tab-xvy act-ii6" id="v-p-8fh">
-            <div class="main-pas">
-                <div class="box-iml box-26n col-7oy">
-                    <h3>Certificate Add</h3>
-                    <br>
-                    <form id="certificateAddForm">
-                        <input type="submit" name="studentverify" class="btn-k16 btn-lri style-YIGlT" value="Add"
-                            id="stu-fh7">
-                    </form>
-                    <br>
-                </div>
-                <div class="box-iml box-26n col-7oy">
-                    <h3>Certificate Status</h3>
-                    <br>
-                    <form id="certificateStatusForm">
-                        <input type="submit" name="studentverify" class="btn-k16 btn-lri style-iLQbS" value="Check"
-                            id="stu-fh7">
-                    </form>
-                    <br>
-                </div>
-                <div class="box-iml box-26n col-7oy">
-                    <h3>Certificate View</h3>
-                    <br>
-                    <form id="certificateViewForm">
-                        <input type="submit" name="studentview" class="btn-k16 btn-lri style-y37sa" value="View"
-                            id="stu-dsy">
-                    </form>
-                    <br>
-                </div>
-            </div>
-        </div>
-        <div class="tab-xvy style-costj" id="v-p-khm">
-            <div class="main-pas">
-                <div class="box-iml box-26n col-7oy">
-                    <h3>Marksheet Add</h3>
-                    <br>
-                    <form id="marksheetAddForm">
-                        <input type="submit" name="studentverify" class="btn-k16 btn-lri style-czCGy" value="Add"
-                            id="stu-fh7">
-                    </form>
-                    <br>
-                </div>
-                <div class="box-iml box-26n col-7oy">
-                    <h3>Marksheet View</h3>
-                    <br>
-                    <form id="marksheetViewForm">
-                        <input type="submit" name="marksheetview" class="btn-k16 btn-lri style-TfOx5" value="View"
-                            id="mar-ycs">
-                    </form>
-                    <br>
-                </div>
-            </div>
-        </div>
+    <div class="topstrip">
+        <div style="align-self: flex-start; align-self: center;"><a href="https://kjsit.somaiya.edu.in/"><img
+                    class="img1" src="{% static 'somaiyalogo.png' %}" alt="SOMAIYA Logo"></a></div>
+        <div style="align-self: flex-end; align-self: center;"><a href="https://www.facebook.com/kjsieitofficial"><img
+                    class="logofb" src="{% static 'fblogo.png' %}" alt=""></a></div>
+        <div style="align-self: flex-end; align-self: center;"><a href="https://www.twitter.com/kjsieit1"><img
+                    class="logotit" src="{% static 'twitterlogo.png' %}" alt=""></a></div>
+        <div style="align-self: flex-end; align-self: center;"><a target="_blank"
+                href="https://www.instagram.com/kjsit_official/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="><img
+                    class="logoinsta" src="{% static 'instalogo.png' %}" alt="insta"></a></div>
+        <div style="align-self: flex-end; align-self: center;"><img class="img2"
+                src="{% static 'somaiyatrustlogo.jpg' %}" alt="SOMAIYA trust"></div>
     </div>
 
-    <footer class="footer">
-        <!-- Footer content -->
-        <section class="footer-links">
-            <div><a href="https://kjsit.somaiya.edu.in/"><img class="img1" src="somaiyalogo.png" alt="SOMAIYA Logo"></a>
+    <header>
+        <!-- Header content -->
+        <h1>Student Proctor Program</h1>
+        <div id="menu-bar-2-container">
+            <div id="menu-bar-2">
+              <a href="{% url 'index' %}">MAIN PAGE</a>
+              <a href="{% url 'search_results' %}">STUDENT INFO</a>
+              <a href="ANNOUNCEMENT.html">REQUESTS</a>
+              <a href="{% url 'meeting' %}">PROCTOR MEETING</a>
+              <a href="{% url 'announcement' %}">ANNOUNCEMENT</a>
+              <a href="{% url 'certificate' %}">CERTIFICATES</a>
+              <a href="{% url 'about' %}">ABOUT</a>
             </div>
-            <div><a href="https://www.facebook.com/kjsieitofficial"><img class="logofb" src="fb logo.png"
-                        alt="Facebook"></a></div>
-            <div><a href="https://www.twitter.com/kjsieit1"><img class="logotit" src="X loho.png" alt="Twitter"></a>
+        </div> 
+    </header>
+
+    <br>
+    <section class="about-us">
+        <div class="content-co5" style="padding: 1% 3% 3% 3%">
+            <!-- Main content with forms -->
+            <div class="tab-xvy act-ii6" id="v-p-8fh">
+                <div class="main-pas">
+                    <div class="box-iml box-26n col-7oy">
+                        <h3>Certificate Add</h3>
+                        <br>
+                        <button onclick="openCertificateAddPopup()">Add Certificate</button>
+                        <div id="certificateAddPopup" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closeCertificateAddPopup()">&times;</span>
+                                <!-- Your form content for Certificate Add goes here -->
+                                <h2>Add Certificate</h2>
+                                <form method="post" enctype="multipart/form-data" action="{% url 'add_certificate' %}">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="id_certificate_name">Certificate Name:</label>
+                                        <input type="text" name="certificate_name" id="id_certificate_name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_image">Image:</label>
+                                        <input type="file" name="image" id="id_image">
+                                    </div>
+                                    <button type="submit">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <br>
+                    </div>
+                    
             </div>
-            <div><a target="_blank"
-                    href="https://www.instagram.com/kjsit_official/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="><img
-                        class="logoinsta" src="insta logo.png" alt="Instagram"></a></div>
-            <div><a href="#"><img class="img2" src="somaiya trust logo.jpg" alt="SOMAIYA trust"></a></div>
-        </section>
+            <div class="tab-xvy style-costj" id="v-p-khm">
+                <div class="box-iml box-26n col-7oy">
+                    <h3>View Certificates</h3>
+                    <br>
+                    <button onclick="openCertificateViewPopup()">View Certificates</button>
+                    <div id="certificateViewPopup" class="popup">
+                        <div class="popup-content">
+                            <span class="close" onclick="closeCertificateViewPopup()">&times;</span>
+                            <h2>Certificates</h2>
+                            <ul>
+                                <!-- Display certificate details here using JavaScript -->
+                            </ul>
+                        </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="bottomstrip">
+        <div style="align-self: flex-start; align-self: center;"><a href="https://kjsit.somaiya.edu.in/"><img
+                    src="{% static 'Somaiya-white.svg' %}" alt="somaiya"></a></div>
+        <div style="align-self: flex-end; align-self: center;"><a href="https://www.facebook.com/kjsieitofficial"><img
+                    class="logofb" src="{% static 'fblogo.png' %}" alt=""></a></div>
+        <div style="align-self: flex-end; align-self: center;"><a href="https://www.twitter.com/kjsieit1"><img
+                    class="logotit" src="{% static 'twitterlogo.png' %}" alt=""></a></div>
+        <div style="align-self: flex-end; align-self: center;"><a target="_blank"
+                href="https://www.instagram.com/kjsit_official/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="><img
+                    class="logoinsta" src="{% static 'instalogo.png' %}" alt="insta"></a></div>
+        <div style="align-self: flex-end; align-self: center;"><img class="img2"
+                src="{% static 'somaiyatrustlogo.jpg' %}" alt="SOMAIYA trust"></div>
     </footer>
 
+
     <script>
-        // JavaScript code to handle form submissions
-        document.addEventListener('DOMContentLoaded', function () {
-            // Function to handle form submission
-            function handleSubmitForm(formId, url) {
-                document.getElementById(formId).addEventListener('submit', function (event) {
-                    event.preventDefault();
-                    console.log(`${formId} form submitted`);
+        // Function to open the certificate view popup
+        function openCertificateViewPopup() {
+            // Display the popup
+            document.getElementById('certificateViewPopup').style.display = 'block';
 
-                    fetch(url, {
-                        method: 'POST',
-                        body: new FormData(this),
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log(data.message);
-                            // Add any additional logic here, such as displaying a success message
-                        })
-                        .catch(error => console.error('Error:', error));
-                });
-            }
+            // Make an AJAX request to fetch certificate data from the server
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Parse the JSON response
+                        var certificates = JSON.parse(xhr.responseText);
 
-            // Handle Certificate Add form submission
-            handleSubmitForm('certificateAddForm', '/certificate/add/');
+                        // Get the UL element to append certificate details
+                        var ul = document.querySelector('#certificateViewPopup ul');
+                        
+                        // Clear existing content
+                        ul.innerHTML = '';
 
-            // Handle Certificate Status form submission
-            handleSubmitForm('certificateStatusForm', '/certificate/status/');
+                        // Populate the popup with certificate details
+                        certificates.forEach(function(certificate) {
+                            var li = document.createElement('li');
+                            var certificateLink = document.createElement('a');
+                            certificateLink.textContent = certificate.certificate_name;
+                            certificateLink.href = certificate.image_url;
+                            certificateLink.target = '_blank'; // Open link in a new tab
+                            li.appendChild(certificateLink);
+                            ul.appendChild(li);
+                        });
+                    } else {
+                        // Handle error case
+                        console.error('Failed to fetch certificate data');
+                    }
+                }
+            };
 
-            // Handle Certificate View form submission
-            handleSubmitForm('certificateViewForm', '/certificate/view/');
+            // Send GET request to the endpoint that provides certificate data
+            xhr.open('GET', '/get_certificates/'); // Adjust the URL as per your project setup
+            xhr.send();
+        }
 
-            // Handle Marksheet Add form submission
-            handleSubmitForm('marksheetAddForm', '/marksheet/add/');
+        // Function to close the certificate view popup
+        function closeCertificateViewPopup() {
+            document.getElementById('certificateViewPopup').style.display = 'none';
+        }
 
-            // Handle Marksheet View form submission
-            handleSubmitForm('marksheetViewForm', '/marksheet/view/');
-        });
+        // Function to open the certificate add popup
+        function openCertificateAddPopup() {
+            document.getElementById('certificateAddPopup').style.display = 'block';
+        }
+
+        // Function to close the certificate add popup
+        function closeCertificateAddPopup() {
+            document.getElementById('certificateAddPopup').style.display = 'none';
+        }
     </script>
 </body>
 

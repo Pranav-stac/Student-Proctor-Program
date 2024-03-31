@@ -1,22 +1,12 @@
-# views.py
-
-from django.contrib.auth import authenticate, login
-from django.http import JsonResponse
-from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
-from .models import Announcement
-  
-from .models import Student     
-from .models import Meeting
-from .forms import LoginForm
-from .models import Proctor
-
-from django.shortcuts import render
-from django.http import JsonResponse
-from .models import Message
+from django.http import JsonResponse, HttpResponse
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
+from .forms import LoginForm, CertificateForm
+from .models import Announcement, Student, Meeting, Proctor, Message, Certificate
 
+# Proctor login view
 def proctor_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -35,34 +25,48 @@ def proctor_login(request):
     else:
         form = LoginForm()
     return render(request, 'login_page.html', {'form': form})
-# Render the index page with the search form
+
+# Logout view
 def logout_view(request):
     logout(request)
     return render(request, 'login_page.html')
+
+# Proctor dashboard view
 @login_required
 def proctor_dashboard(request):
     proctor_batch = request.session.get('proctor_batch')
     students = Student.objects.filter(proctor_batch=proctor_batch)
     return render(request, 'proctor_dashboard.html', {'students': students})
+
+# Index view
 @login_required
 def index(request):
     # Your view logic goes here
     return render(request, 'index.html')
+
+# Announcement view
 def announcement(request):
     # Your view logic goes here
     return render(request, 'announcement.html')
 
+# About view
 def about(request):
     # Your view logic goes here
     return render(request, 'about.html')
+
+# Login page view
 @login_required
 def login_page(request):
     # Your view logic goes here
     return render(request, 'login_page.html')
+
+# Meeting view
 @login_required
 def meeting(request):
     # Your view logic goes here
     return render(request, 'meeting.html')
+
+# Schedule meeting view
 @login_required
 def schedule_meeting(request):
     if request.method == 'POST':
@@ -79,6 +83,7 @@ def schedule_meeting(request):
 
     return render(request, 'schedule_meeting.html') 
 
+# Search results view
 @login_required
 def search_results(request):
     # Retrieve the search query from the GET parameters
@@ -96,6 +101,7 @@ def search_results(request):
     # Pass the search results to the template for rendering
     return render(request, 'search_results.html', {'query': query, 'results': results})
 
+# Get latest announcements API view
 def get_latest_announcements(request):
     # Retrieve latest announcements
     latest_announcements = Announcement.objects.order_by('-created_at')[:10]
@@ -109,36 +115,11 @@ def get_latest_announcements(request):
     # Return JSON response
     return JsonResponse({'announcements': announcements_data})
 
-<<<<<<< HEAD
+# Certificate view
+def certificate(request):
+    return render(request, 'certificate.html')
 
-def add_certificate(request):
-    # Logic to add certificate
-    # Access form data using request.POST
-    return JsonResponse({'message': 'Certificate added successfully'})
-
-def check_certificate_status(request):
-    # Logic to check certificate status
-    # Access form data using request.POST
-    return JsonResponse({'message': 'Certificate status checked'})
-
-def view_certificate(request):
-    # Logic to view certificate
-    # Access form data using request.POST
-    return JsonResponse({'message': 'Certificate viewed'})
-
-def add_marksheet(request):
-    # Logic to add marksheet
-    # Access form data using request.POST
-    return JsonResponse({'message': 'Marksheet added successfully'})
-
-def view_marksheet(request):
-    # Logic to view marksheet
-    # Access form data using request.POST
-    return JsonResponse({'message': 'Marksheet viewed'})
-=======
-def index(request):
-    return render(request, 'index.html')
-
+# Send message API view
 @csrf_exempt
 def send_message(request):
     if request.method == 'POST':
@@ -147,7 +128,38 @@ def send_message(request):
         Message.objects.create(sender=sender, message=message)
         return JsonResponse({'status': 'OK'})
 
+# Get messages API view
 def get_messages(request):
     messages = Message.objects.all().values()
     return JsonResponse(list(messages), safe=False)
->>>>>>> 4aecfee61da946b0acc68c3ee74af3d3af2a45ca
+
+# Add certificate view
+def add_certificate(request):
+    if request.method == 'POST':
+        form = CertificateForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            # Redirect to the certificate page
+            return redirect('certificate')  # Assuming 'certificate' is the URL name for the certificate page
+    else:
+        form = CertificateForm()
+    return render(request, 'add_certificate.html', {'form': form})
+
+# View certificate view
+def view_certificate(request, certificate_id):
+    try:
+        certificate = Certificate.objects.get(id=certificate_id)
+        return render(request, 'view_certificate.html', {'certificate': certificate})
+    except Certificate.DoesNotExist:
+        return HttpResponse("Certificate not found")
+
+# Get certificates API view
+def get_certificates(request):
+    # Retrieve all certificates from the database
+    certificates = Certificate.objects.all()
+
+    # Serialize certificates data
+    certificates_data = [{'certificate_name': cert.certificate_name, 'image_url': cert.image.url} for cert in certificates]
+
+    # Return the serialized data as JSON response
+    return JsonResponse(certificates_data, safe=False)

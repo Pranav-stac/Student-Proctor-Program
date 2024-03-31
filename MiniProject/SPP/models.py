@@ -44,6 +44,22 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name
+from django.db import models
+
+from django.db import models
+from django.utils import timezone
+
+from django.db import models
+
+
+
+class Certificate(models.Model):
+    certificate_name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='certificate_images/', null=True, blank=True)
+
+    def __str__(self):
+        return self.certificate_name
+    # Other fields in your Certificate model
 
 class Message(models.Model):
     sender = models.CharField(max_length=100)
