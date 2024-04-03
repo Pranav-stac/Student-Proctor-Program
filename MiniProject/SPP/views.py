@@ -45,17 +45,19 @@ def index(request):
     return render(request, 'index.html')
 
 # Announcement view
+@login_required
 def announcement(request):
     # Your view logic goes here
     return render(request, 'announcement.html')
 
 # About view
+@login_required
 def about(request):
     # Your view logic goes here
     return render(request, 'about.html')
 
 # Login page view
-@login_required
+
 def login_page(request):
     # Your view logic goes here
     return render(request, 'login_page.html')
