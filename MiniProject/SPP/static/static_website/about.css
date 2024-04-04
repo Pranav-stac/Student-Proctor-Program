@@ -20,36 +20,39 @@ footer {
   padding: 1em;
   position: fixed;
   bottom: 0;
-  
+
 }
 
 
 #menu-bar-2-container {
-background-color: #9B2928;
-width: 100%;
- /* Spread items evenly */
-align-items: center; /* Center items vertically */
+  background-color: #9B2928;
+  width: 100%;
+  /* Spread items evenly */
+  align-items: center;
+  /* Center items vertically */
 }
 
 #menu-bar-2 {
-width: 1000px; /* Adjust width as needed */
-display: flex;
-justify-content: space-evenly;
-margin-left: 17%;
+  width: 1000px;
+  /* Adjust width as needed */
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 17%;
 }
 
 #menu-bar-2 a {
-color: white;
-text-decoration: none;
-padding:0 30px;
+  color: white;
+  text-decoration: none;
+  padding: 0 30px;
 
-border-right: 1px solid #BB4545;
-font-size: 15px;
-font-weight: 500; /* Ensure the text is bold */
+  border-right: 1px solid #BB4545;
+  font-size: 15px;
+  font-weight: 500;
+  /* Ensure the text is bold */
 }
 
 #menu-bar-2 a:hover {
-text-decoration: underline;
+  text-decoration: underline;
 }
 
 .login {
@@ -69,8 +72,9 @@ text-decoration: underline;
   border-radius: 10px;
   text-align: justify;
   margin-bottom: 200px;
-  
+
 }
+
 .student-details-container {
   display: flex;
   justify-content: space-between;
@@ -104,6 +108,7 @@ text-decoration: underline;
   border-radius: 10px;
   text-align: justify;
 }
+
 .meeting {
   max-width: 800px;
   margin: auto;
@@ -112,8 +117,13 @@ text-decoration: underline;
   background-color: #f4f4f4;
   border-radius: 10px;
   text-align: justify;
-  
+
 }
+
+span {
+  display: inline;
+}
+
 .team-member {
   display: flex;
   align-items: center;
@@ -199,7 +209,7 @@ text-decoration: underline;
   border-radius: 50%;
 }
 
-.topstrip{
+.topstrip {
   /* display: flex;
   align-items: center;
   justify-content: center;
@@ -217,36 +227,39 @@ text-decoration: underline;
 
 }
 
-.img1{
+.img1 {
   width: 270px;
   margin-left: 35px;
 }
 
-.img2{
+.img2 {
   width: 60px;
   margin-left: 10px;
 }
 
-.logoinsta{
+.logoinsta {
   width: 15px;
 }
-.logofb{
+
+.logofb {
   width: 15px;
   margin-right: 10px;
   margin-left: 950px;
 }
-.logotit{
+
+.logotit {
   width: 15px;
-  margin-right: 10px;;
+  margin-right: 10px;
+  ;
 }
 
-ul{
+ul {
   list-style-type: circle;
-  
+
 }
 
-.bottomstrip{
-  
+.bottomstrip {
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -254,15 +267,16 @@ ul{
   background-color: #154a73;
   width: 100%;
   height: 80px;
-  
-  
-  
+
+
+
 }
 
 
+
 /* .flex{ */
-  /* display: flex; */
-  /* align-items: center; */
+/* display: flex; */
+/* align-items: center; */
 /* } */
 /* Paste your CSS content here */
 /* CSS styles for the About Us page */
@@ -433,11 +447,11 @@ input {
 
 @keyframes fadeEffect {
   0% {
-      opacity: 0;
+    opacity: 0;
   }
 
   100% {
-      opacity: 1;
+    opacity: 1;
   }
 }
 

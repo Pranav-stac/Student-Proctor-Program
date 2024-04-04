@@ -10,7 +10,15 @@ def get_schedule_meetings(request):
     meetings = Meeting.objects.all()
     meetings_data = [{'date': meeting.date, 'time': meeting.time, 'reason': meeting.reason} for meeting in meetings]
     return JsonResponse({'meetings': meetings_data})
-
+def upload_announcement(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        announcement = Announcement(title=title, content=content)
+        announcement.save()
+        return JsonResponse({'status': 'success'})
+    else:
+        return JsonResponse({'status': 'error'})
 def proctor_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)

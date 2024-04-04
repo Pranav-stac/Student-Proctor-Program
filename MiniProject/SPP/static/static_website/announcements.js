@@ -21,8 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
             announcementsSection.appendChild(announcementsList); // Append unordered list to announcements section
         })
         .catch(error => console.error('Error fetching announcements:', error));
-});
-document.addEventListener('DOMContentLoaded', function () {
+}); function fetchMeetingsAndUpdateUI() {
     fetch('/get_schedule_meetings/')
         .then(response => response.json())
         .then(data => {
@@ -35,7 +34,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 listItem.innerHTML = `
                     <p>Date: ${meeting.date}</p>
                     <p>Time: ${meeting.time}</p>
-                    <p>Reason: ${meeting.reason}</p>
+                   
+                    <span>Reason:${meeting.reason}</span>
+                
                 `;
                 meetingsList.appendChild(listItem);
             });
@@ -45,4 +46,10 @@ document.addEventListener('DOMContentLoaded', function () {
             meetingsSection.appendChild(meetingsList);
         })
         .catch(error => console.error('Error fetching schedule meetings:', error));
-});
+}
+
+// Fetch meetings initially
+fetchMeetingsAndUpdateUI();
+
+// Fetch meetings every 5 seconds
+setInterval(fetchMeetingsAndUpdateUI, 5000);
