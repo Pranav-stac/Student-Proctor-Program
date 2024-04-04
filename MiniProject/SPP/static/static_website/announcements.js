@@ -22,3 +22,27 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error fetching announcements:', error));
 });
+document.addEventListener('DOMContentLoaded', function () {
+    fetch('/get_schedule_meetings/')
+        .then(response => response.json())
+        .then(data => {
+            const meetings = data.meetings;
+            const meetingsList = document.createElement('ul');
+            meetingsList.classList.add('meeting-list');
+
+            meetings.forEach(meeting => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <p>Date: ${meeting.date}</p>
+                    <p>Time: ${meeting.time}</p>
+                    <p>Reason: ${meeting.reason}</p>
+                `;
+                meetingsList.appendChild(listItem);
+            });
+
+            const meetingsSection = document.querySelector('.meetings');
+            meetingsSection.innerHTML = '';
+            meetingsSection.appendChild(meetingsList);
+        })
+        .catch(error => console.error('Error fetching schedule meetings:', error));
+});
