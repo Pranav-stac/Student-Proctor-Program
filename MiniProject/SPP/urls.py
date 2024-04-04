@@ -20,4 +20,6 @@ urlpatterns = [
     path('get_messages/', views.get_messages, name='get_messages'),
     path('get_certificates/', views.get_certificates, name='get_certificates'),
     path('certificate/<int:certificate_id>/', views.view_certificate, name='view_certificate'),
+    path('get_schedule_meetings/', views.get_schedule_meetings, name='get_schedule_meetings'),
 ]
+

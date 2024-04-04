@@ -6,7 +6,11 @@ from django.views.decorators.csrf import csrf_exempt
 from .forms import LoginForm, CertificateForm
 from .models import Announcement, Student, Meeting, Proctor, Message, Certificate
 
-# Proctor login view
+def get_schedule_meetings(request):
+    meetings = Meeting.objects.all()
+    meetings_data = [{'date': meeting.date, 'time': meeting.time, 'reason': meeting.reason} for meeting in meetings]
+    return JsonResponse({'meetings': meetings_data})
+
 def proctor_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
