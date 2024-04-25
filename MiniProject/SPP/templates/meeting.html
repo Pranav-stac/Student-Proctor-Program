@@ -6,6 +6,14 @@
   <title>About Us</title>
   {% load static %}
   <link rel="stylesheet" href="{% static 'static_website/about.css' %}" />
+  <style>
+#announcementForm {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: 300px;
+}
+</style>
 </head>
 <body>
   <div class="topstrip">
@@ -20,19 +28,40 @@
     <h1>Student Proctor Program</h1>
     <div id="menu-bar-2-container">
       <div id="menu-bar-2">
-        <a href="{% url 'index' %}">MAIN PAGE</a>
+        <a href="{% url 'proctor_dashboard' %}">MAIN PAGE</a>
         <a href="{% url 'search_results' %}">STUDENT INFO</a>
-        <a href="ANNOUNCEMENT.html">REQUESTS</a>
+        
         <a href="{% url 'meeting' %}">PROCTOR MEETING</a>
-        <a href="{% url 'announcement' %}">ANNOUNCEMENT</a>
-        <a href="{% url 'certificate' %}">CERTIFICATES</a>
+        
+        <a href="{% url 'certificatep' %}">CERTIFICATES</a>
         <a href="{% url 'about' %}">ABOUT</a>
       </div>
-    </div> 
+  </div> 
   </header>
   
   <br>
   
+  <section class="about-us">
+   <!-- Trigger/Button to open the form -->
+<button onclick="toggleForm()">Add Announcement</button>
+
+<!-- Hidden form for adding an announcement -->
+<div id="announcementForm" style="display:none;">
+    <form method="post" action="{% url 'add_announcement' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required><br><br>
+
+      <label for="content">Content:</label>
+      <textarea id="content" name="content" rows="4" cols="50" required></textarea><br><br>
+
+      <label for="attachment">Attachment:</label>
+      <input type="file" id="attachment" name="attachment"><br><br>
+
+      <button type="submit">Submit</button>
+    </form>
+</div>
+     </section>
   <section class="about-us">
     <h2>Select Meeting Type:</h2>
     <select id="meetingType" onchange="showFields()">
@@ -58,17 +87,79 @@
         <label for="reason">Reason:</label><br>
         <textarea id="reason" name="reason" rows="4" cols="50"></textarea><br><br>
         <button onclick="scheduleMeeting()">Schedule Meeting</button>
-    </div>
-
-    <div id="announcementForm">
-      <label for="announcementTitle">Title:</label>
-      <input type="text" id="announcementTitle" name="announcementTitle"><br><br>
-      <label for="announcementContent">Content:</label><br>
-      <textarea id="announcementContent" name="announcementContent" rows="4" cols="50"></textarea><br><br>
-      <button onclick="uploadAnnouncement()">Upload Announcement</button>
-    </div>
-      
+      </div>
+    <script>
+        function showFields() {
+          var meetingType = document.getElementById("meetingType").value;
+          var offlineFields = document.getElementById("offlineFields");
+          var onlineFields = document.getElementById("onlineFields");
+          
+          if (meetingType === "offline") {
+            offlineFields.style.display = "block";
+          } else {
+            offlineFields.style.display = "block";
+          }
+        }
+  
+        function scheduleMeeting() {
+          var meetingDate = document.getElementById("meetingDate").value;
+          var meetingTime = document.getElementById("meetingTime").value;
+          var reason = document.getElementById("reason").value;
+  
+          // Send data to the server using AJAX
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "{% url 'schedule_meeting' %}", true);
+          xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+          xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken")); // Include the CSRF token in the request headers
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                // Handle successful response
+                alert("Meeting scheduled successfully!");
+              } else {
+                // Handle error response
+                alert("Error scheduling meeting. Please try again.");
+              }
+            }
+          };
+  
+          // Construct form data
+          var formData = "meetingDate=" + encodeURIComponent(meetingDate) +
+                         "&meetingTime=" + encodeURIComponent(meetingTime) +
+                         "&reason=" + encodeURIComponent(reason);
+  
+          xhr.send(formData);
+        }
+  
+        // Function to get CSRF token from cookie
+        function getCookie(name) {
+          var cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+              var cookie = cookies[i].trim();
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+              }
+            }
+          }
+          return cookieValue;
+        }
+      </script>
+      <script>
+        function toggleForm() {
+            var form = document.getElementById("announcementForm");
+            if (form.style.display === "none") {
+                form.style.display = "block";
+            } else {
+                form.style.display = "none";
+            }
+        }
+        </script>
   </section>
+
 
   <footer class="bottomstrip">
     <div style="align-self: flex-start; align-self: center;"><a href="https://kjsit.somaiya.edu.in/"><img src="{% static 'Somaiya-white.svg' %}" alt="somaiya"></a></div>
@@ -78,95 +169,6 @@
     <div style="align-self: flex-end; align-self: center;"><img class="img2" src="{% static 'somaiyatrustlogo.jpg' %}" alt="SOMAIYA tr"></div>
   </footer>
 
-  <script>
-    function showFields() {
-      var meetingType = document.getElementById("meetingType").value;
-      var offlineFields = document.getElementById("offlineFields");
-      var onlineFields = document.getElementById("onlineFields");
-      
-      if (meetingType === "offline") {
-        offlineFields.style.display = "block";
-        onlineFields.style.display = "none";
-      } else {
-        offlineFields.style.display = "none";
-        onlineFields.style.display = "block";
-      }
-    }
-
-    function scheduleMeeting() {
-      var meetingDate = document.getElementById("meetingDate").value;
-      var meetingTime = document.getElementById("meetingTime").value;
-      var reason = document.getElementById("reason").value;
-
-      // Send data to the server using AJAX
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "{% url 'schedule_meeting' %}", true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken")); // Include the CSRF token in the request headers
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            // Handle successful response
-            alert("Meeting scheduled successfully!");
-          } else {
-            // Handle error response
-            alert("Error scheduling meeting. Please try again.");
-          }
-        }
-      };
-
-      // Construct form data
-      var formData = "meetingDate=" + encodeURIComponent(meetingDate) +
-                     "&meetingTime=" + encodeURIComponent(meetingTime) +
-                     "&reason=" + encodeURIComponent(reason);
-
-      xhr.send(formData);
-    }
-
-    function uploadAnnouncement() {
-      var title = document.getElementById("announcementTitle").value;
-      var content = document.getElementById("announcementContent").value;
   
-      // Send data to the server using AJAX
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "{% url 'upload_announcement' %}", true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken")); // Include the CSRF token in the request headers
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            // Handle successful response
-            alert("Announcement uploaded successfully!");
-          } else {
-            // Handle error response
-            alert("Error uploading announcement. Please try again.");
-          }
-        }
-      };
-
-      // Construct form data
-      var formData = "title=" + encodeURIComponent(title) +
-                     "&content=" + encodeURIComponent(content);
-
-      xhr.send(formData);
-    }
-
-    // Function to get CSRF token from cookie
-    function getCookie(name) {
-      var cookieValue = null;
-      if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-          var cookie = cookies[i].trim();
-          // Does this cookie string begin with the name we want?
-          if (cookie.substring(0, name.length + 1) === (name + '=')) {
-            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-            break;
-          }
-        }
-      }
-      return cookieValue;
-    }
-  </script>
 </body>
 </html>

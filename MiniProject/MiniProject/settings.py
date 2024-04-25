@@ -47,6 +47,7 @@ TEMPLATES = [
         },
     },
 ]
+AUTHENTICATION_BACKENDS = ['SPP.auth_backends.NoLastLoginModelBackend']
 
 WSGI_APPLICATION = 'MiniProject.wsgi.application'
 

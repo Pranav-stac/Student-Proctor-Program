@@ -70,7 +70,7 @@
               
               
               <a href="{% url 'announcement' %}">ANNOUNCEMENT</a>
-              <a href="{% url 'certificate' %}">CERTIFICATES</a>
+              <a href="{% url 'certificatep' %}">CERTIFICATES</a>
               <a href="{% url 'about' %}">ABOUT</a>
             </div>
         </div> 
@@ -82,33 +82,7 @@
             <!-- Main content with forms -->
             <div class="tab-xvy act-ii6" id="v-p-8fh">
                 <div class="main-pas">
-                    <div class="box-iml box-26n col-7oy">
-                        <h3>Certificate Add</h3>
-                        <br>
-                        <button onclick="openCertificateAddPopup()">Add Certificate</button>
-                        <div id="certificateAddPopup" class="popup">
-                            <div class="popup-content">
-                                <span class="close" onclick="closeCertificateAddPopup()">&times;</span>
-                                <!-- Your form content for Certificate Add goes here -->
-                                <h2>Add Certificate</h2>
-                                <form method="post" enctype="multipart/form-data" action="{% url 'add_certificate' %}">
-                                    {% csrf_token %}
-                                    <div class="form-group">
-                                        <label for="id_certificate_name">Certificate Name:</label>
-                                        <label for="id_certificate_name">Student Name:</label>
-                                        <input type="text" name="certificate_name" id="id_certificate_name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="id_image">Image:</label>
-                                        <input type="file" name="image" id="id_image">
-                                    </div>
-                                    <button type="submit">Submit</button>
-                                </form>
-                            </div>
-                        </div>
-                        
-                        <br>
-                    </div>
+                   
                     
             </div>
             <div class="tab-xvy style-costj" id="v-p-khm">

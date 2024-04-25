@@ -9,11 +9,13 @@ urlpatterns = [
     path('schedule_meeting/', views.schedule_meeting, name='schedule_meeting'),
     path('about/', views.about, name='about'),
     path('proctor_login/', views.proctor_login, name='proctor_login'),
+    path('student_login/', views.student_login, name='student_login'),
     path('proctor_dashboard/', views.proctor_dashboard, name='proctor_dashboard'),
     path('logout/', views.logout_view, name='logout'),
     path('announcement/', views.announcement, name='announcement'),
     path('get_latest_announcements/', views.get_latest_announcements, name='get_latest_announcements'), 
     path('certificate/', views.certificate, name='certificate'),
+    path('certificatep/', views.certificatep, name='certificatep'),
     path('certificate/add/', views.add_certificate, name='add_certificate'),
     path('certificate/view/', views.view_certificate, name='view_certificate'),
     path('send_message/', views.send_message, name='send_message'),
@@ -21,6 +23,6 @@ urlpatterns = [
     path('get_certificates/', views.get_certificates, name='get_certificates'),
     path('certificate/<int:certificate_id>/', views.view_certificate, name='view_certificate'),
     path('get_schedule_meetings/', views.get_schedule_meetings, name='get_schedule_meetings'),
-    path('upload_announcement/', views.upload_announcement, name='upload_announcement'),
+    path('add-announcement/', views.add_announcement, name='add_announcement'),
 ]
 

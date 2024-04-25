@@ -24,6 +24,7 @@ class Proctor(models.Model):
 
 
 class Student(models.Model):
+    
     name = models.CharField(max_length=100)
     college_id = models.CharField(max_length=20)
     year_of_admission = models.IntegerField()
@@ -44,6 +45,12 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name
+    def save(self, *args, **kwargs):
+        # Exclude the last_login field if present
+        if 'last_login' in self._meta.fields:
+            self._meta.fields.remove('last_login')
+        
+        super(Student, self).save(*args, **kwargs)
 from django.db import models
 
 from django.db import models

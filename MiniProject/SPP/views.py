@@ -10,21 +10,14 @@ def get_schedule_meetings(request):
     meetings = Meeting.objects.all()
     meetings_data = [{'date': meeting.date, 'time': meeting.time, 'reason': meeting.reason} for meeting in meetings]
     return JsonResponse({'meetings': meetings_data})
-def upload_announcement(request):
-    if request.method == 'POST':
-        title = request.POST.get('title')
-        content = request.POST.get('content')
-        announcement = Announcement(title=title, content=content)
-        announcement.save()
-        return JsonResponse({'status': 'success'})
-    else:
-        return JsonResponse({'status': 'error'})
+
 def proctor_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
+            # Try to authenticate as a proctor first
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 proctor = Proctor.objects.get(user=user)
@@ -36,9 +29,34 @@ def proctor_login(request):
                 return render(request, 'login_page.html', {'form': form, 'error_message': error_message})
     else:
         form = LoginForm()
+        error_message = "Invalid username or password."
     return render(request, 'login_page.html', {'form': form})
 
-# Logout view
+     # views.py
+from django.contrib.auth import login
+from .models import Student
+
+# views.py
+from django.contrib.auth import authenticate, login
+from .models import Student
+
+# views.py
+from django.contrib.auth import authenticate, login
+from .models import Student
+
+     # views.py
+from django.contrib.auth import login
+from .auth_backends import CustomStudentAuthBackend
+
+def student_login(request):
+         if request.method == 'POST':
+             username = request.POST.get('username')
+             password = request.POST.get('password')
+             
+             # Check if the username is numeric
+            
+             return render(request, 'home.html')
+
 def logout_view(request):
     logout(request)
     return render(request, 'login_page.html')
@@ -132,6 +150,8 @@ def get_latest_announcements(request):
 # Certificate view
 def certificate(request):
     return render(request, 'certificate.html')
+def certificatep(request):
+    return render(request, 'certificatep.html')
 
 # Send message API view
 @csrf_exempt
@@ -177,3 +197,20 @@ def get_certificates(request):
 
     # Return the serialized data as JSON response
     return JsonResponse(certificates_data, safe=False)
+
+from django.shortcuts import render, redirect
+from .models import Announcement
+from django.http import HttpResponse
+
+def add_announcement(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        content = request.POST['content']
+        # Get the uploaded file if any
+
+        announcement = Announcement(title=title, content=content)
+        announcement.save()
+
+        # Stay on the same page after saving the announcement
+        return render(request, 'meeting.html', {'success': True})
+    return render(request, 'meeting.html')

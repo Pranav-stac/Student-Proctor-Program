@@ -6,32 +6,19 @@
   <title>About Us</title>
   {% load static %}
   <link rel="stylesheet" href="{% static 'static_website/about.css' %}" />
+  <style>
+    .login-container {
+      display: flex;
+    }
+    .login-form {
+      flex: 1;
+      margin-right: 20px;
+    }
+  </style>
 </head>
 <body>
   <div class="topstrip">
-    <div style="align-self: flex-start; align-self: center;">
-      <a href="https://kjsit.somaiya.edu.in/">
-        <img class="img1" src="{% static 'somaiyalogo.png' %}" alt="SOMAIYA Logo">
-      </a>
-    </div>
-    <div style="align-self: flex-end; align-self: center;">
-      <a href="https://www.facebook.com/kjsieitofficial">
-        <img class="logofb" src="{% static 'fblogo.png' %}" alt="">
-      </a>
-    </div>
-    <div style="align-self: flex-end; align-self: center;">
-      <a href="https://www.twitter.com/kjsieit1">
-        <img class="logotit" src="{% static 'twitterlogo.png' %}" alt="">
-      </a>
-    </div>
-    <div style="align-self: flex-end; align-self: center;">
-      <a target="_blank" href="https://www.instagram.com/kjsit_official/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==">
-        <img class="logoinsta" src="{% static 'instalogo.png' %}" alt="insta">
-      </a>
-    </div>
-    <div style="align-self: flex-end; align-self: center;">
-      <img class="img2" src="{% static 'somaiyatrustlogo.jpg' %}" alt="SOMAIYA trust">
-    </div>
+    <!-- Top strip content here -->
   </div>
   
   <header>
@@ -41,46 +28,51 @@
   
   <section class="about-us">
     <h2>Login</h2>
-    {% if error_message %}
-        <p>{{ error_message }}</p>
-    {% endif %}
-    <form method="post" action="{% url 'proctor_login' %}">
-        {% csrf_token %}
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <button type="submit">Login</button>
-    </form>
-
+    <div class="login-container">
+      <div class="login-form">
+        <h3>Student Login</h3>
+        {% if error_message %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+        <form method="post" action="{% url 'student_login' %}">
+            {% csrf_token %}
+            <label for="student_username">Username:</label>
+            <input type="text" id="student_username" name="student_username" required>
+            <br>
+            <label for="student_password">Password:</label>
+            <input type="password" id="student_password" name="student_password" required>
+            <br>
+            <button type="submit">Login</button>
+        </form>
+        <script>
+            document.getElementById('student_username').value = '';
+            document.getElementById('student_password').value = '';
+        </script>
+      </div>
+      <div class="login-form">
+        <h3>Proctor Login</h3>
+        {% if error_message %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+        <form method="post" action="{% url 'proctor_login' %}">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit">Login</button>
+        </form>
+        <script>
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        </script>
+      </div>
+    </div>
   </section>
-
   <footer class="bottomstrip">
-    <div style="align-self: flex-start; align-self: center;">
-      <a href="https://kjsit.somaiya.edu.in/">
-        <img src="{% static 'Somaiya-white.svg' %}" alt="somaiya">
-      </a>
-    </div>
-    <div style="align-self: flex-end; align-self: center;">
-      <a href="https://www.facebook.com/kjsieitofficial">
-        <img class="logofb" src="{% static 'fblogo.png' %}" alt="">
-      </a>
-    </div>
-    <div style="align-self: flex-end; align-self: center;">
-      <a href="https://www.twitter.com/kjsieit1">
-        <img class="logotit" src="{% static 'twitterlogo.png' %}" alt="">
-      </a>
-    </div>
-    <div style="align-self: flex-end; align-self: center;">
-      <a target="_blank" href="https://www.instagram.com/kjsit_official/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==">
-        <img class="logoinsta" src="{% static 'instalogo.png' %}" alt="insta">
-      </a>
-    </div>
-    <div style="align-self: flex-end; align-self: center;">
-      <img class="img2" src="{% static 'somaiyatrustlogo.jpg' %}" alt="SOMAIYA trust">
-    </div>
+    <!-- Footer content here -->
   </footer>
 </body>
 </html>
